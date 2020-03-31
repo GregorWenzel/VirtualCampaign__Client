@@ -1,0 +1,770 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Modules>
+  <Module>
+    <ModuleName>General</ModuleName>
+	<Elements>
+	<Element>
+		<ID>DROPDOWN_DATE</ID>
+		<text>Date</text>
+	</Element>
+	<Element>
+		<ID>DROPDOWN_NAME</ID>
+		<text>Name</text>
+	</Element>
+	<Element>
+		<ID>DROPDOWN_DEFAULT</ID>
+		<text>Default</text>
+	</Element>
+	<Element>
+		<ID>NEW_PRODUCTION</ID>
+		<text>New production</text>
+	</Element>
+	<Element>
+		<ID>JAN_TEXT</ID>
+		<text>January</text>
+	</Element>
+	<Element>
+		<ID>FEB_TEXT</ID>
+		<text>February</text>
+	</Element>
+	<Element>
+		<ID>MAR_TEXT</ID>
+		<text>March</text>
+	</Element>
+	<Element>
+		<ID>APR_TEXT</ID>
+		<text>April</text>
+	</Element>
+	<Element>
+		<ID>MAI_TEXT</ID>
+		<text>May</text>
+	</Element>
+	<Element>
+		<ID>JUN_TEXT</ID>
+		<text>June</text>
+	</Element>
+	<Element>
+		<ID>JUL_TEXT</ID>
+		<text>July</text>
+	</Element>
+	<Element>
+		<ID>AUG_TEXT</ID>
+		<text>August</text>
+	</Element>
+	<Element>
+		<ID>SEP_TEXT</ID>
+		<text>September</text>
+	</Element>
+	<Element>
+		<ID>OCT_TEXT</ID>
+		<text>October</text>
+	</Element>
+	<Element>
+		<ID>NOV_TEXT</ID>
+		<text>November</text>
+	</Element>
+	<Element>
+		<ID>DEC_TEXT</ID>
+		<text>December</text>
+	</Element>
+	</Elements>
+</Module>
+  <Module>
+    <ModuleName>Main</ModuleName>
+	<Elements>
+		<Element>
+			<ID>welcomeLabel</ID>
+			<text>Welcome</text>
+		</Element>
+		<Element>
+			<ID>loginButton</ID>
+			<text>Re-Login</text>
+		</Element>
+	</Elements>
+	</Module>
+  <Module>
+    <ModuleName>Main_HUB</ModuleName>
+	<Elements>
+		<Element>
+			<ID>HUBFilmsLabel</ID>
+			<text>My Filmproductions</text>
+			<toolTip>Got to film library</toolTip>
+		</Element>
+		<Element>
+			<ID>HUBMotifsLabel</ID>
+			<text>My Motifs</text>
+			<toolTip>Got to motif library</toolTip>
+		</Element>
+		<Element>
+			<ID>HUBAdminLabel</ID>
+			<text>Administration</text>
+			<toolTip>Got to administration</toolTip>
+		</Element>
+		<Element>
+			<ID>HUBStatisticsLabel</ID>
+			<text>Statistics</text>
+			<toolTip>Got to statistic analysis</toolTip>
+		</Element>
+		<Element>
+			<ID>HUBProductionLabel</ID>
+			<text>Production</text>
+			<toolTip>Got to production page</toolTip>
+		</Element>
+
+	</Elements>
+	</Module>
+	<Module>	  
+    <ModuleName>Loader</ModuleName>
+	<Elements>
+		<Element>
+			<ID>LOAD_INIT</ID>
+			<text>Loading Data...</text>
+		</Element>
+		<Element>
+			<ID>LOAD_ACCOUNTS</ID>
+			<text>Loading Accounts...</text>
+		</Element>
+		<Element>
+			<ID>LOAD_PRODUCTS</ID>
+			<text>Loading Products...</text>
+		</Element>
+		<Element>
+			<ID>LOAD_MOTIFS</ID>
+			<text>Loading Motifs...</text>
+		</Element>
+		<Element>
+			<ID>LOAD_FILMS</ID>
+			<text>Loading Films...</text>
+		</Element>
+		<Element>
+			<ID>LOAD_DONE</ID>
+			<text>Loader done.</text>
+		</Element>
+	</Elements>
+	</Module>
+	<Module>
+    <ModuleName>Logout</ModuleName>
+	<Elements>
+		<Element>
+			<ID>goodbyeLabel</ID>
+			<text>Goodbye!</text>
+		</Element>
+		<Element>
+			<ID>exitTextLabel</ID>
+			<text>Thank you for using VirtualCampaign!&#xd;&#xd;We are happy for your feedback.&#xd;Send us an email to:&#xd;info@virtualcampaign.de&#xd;&#xd;Your VirtualCampaign-Team!</text>
+		</Element>
+	</Elements>
+	</Module>
+  <Module>
+    <ModuleName>MainLogin</ModuleName>
+    <Elements>
+      <Element>
+        <ID>lbl_01</ID>
+        <text>Account</text>
+        <toolTip></toolTip>
+      </Element>
+      <Element>
+        <ID>ti_username</ID>
+        <text>Enter Username</text>
+        <toolTip></toolTip>
+      </Element>
+      <Element>
+        <ID>ti_password</ID>
+        <text>Enter password</text>
+        <toolTip />
+      </Element>
+      <Element>
+        <ID>btnSend</ID>
+        <text>Login</text>
+        <toolTip />
+      </Element>
+     <Element>
+        <ID>lb_userError</ID>
+        <text>User already logged in</text>
+        <toolTip />
+      </Element>
+     <Element>
+        <ID>lb_passwordError</ID>
+        <text>Pleae enter corrected login data</text>
+        <toolTip />
+      </Element>	
+    </Elements>
+  </Module> 
+  <Module>
+	<ModuleName>CommandBarProduction</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>zoomInButton</ID>
+        <text>Zoom In</text>
+        <toolTip>Enlarge Icons</toolTip>
+      </Element>
+      <Element>
+        <ID>zoomOutButton</ID>
+        <text>Zoom Out</text>
+        <toolTip>Reduce Icon size</toolTip>
+      </Element>
+      <Element>
+        <ID>deleteClipButton</ID>
+        <text>Delete Clip</text>
+        <toolTip>Delete selected clip</toolTip>
+      </Element>
+      <Element>
+        <ID>replaceClipButton</ID>
+        <text>Replace Clip</text>
+        <toolTip>Exchange selected clip with another</toolTip>
+      </Element>
+     <Element>
+        <ID>insertClipLabel</ID>
+        <text>Insert Clip</text>
+        <toolTip>Insert empty clip after the selected clip</toolTip>
+      </Element>
+     <Element>
+        <ID>newLabel</ID>
+        <text>New</text>
+        <toolTip>Restart production process</toolTip>
+      </Element>	
+      <Element>
+        <ID>bt_saveProduction</ID>
+        <text>Save</text>
+        <toolTip>Save current production for later use</toolTip>
+      </Element>
+     <Element>
+        <ID>produceButton</ID>
+        <text>Produce</text>
+        <toolTip>Produce clips in current timeline</toolTip>
+      </Element>
+    </Elements>
+  </Module> 	
+  <Module>
+	<ModuleName>CommandBarProducts</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>applyButton</ID>
+        <text>Apply</text>
+        <toolTip>Insert selected product into timeline</toolTip>
+      </Element>
+      <Element>
+        <ID>search</ID>
+        <text>Enter your search</text>
+        <toolTip>Filter products by name and/or location</toolTip>
+      </Element>
+    </Elements>
+  </Module> 
+  <Module>
+	<ModuleName>FilmDownloadPopUp</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>warningLabel</ID>
+        <text>Download</text>
+        <toolTip>Download selected film</toolTip>
+      </Element>
+      <Element>
+        <ID>cancelButton</ID>
+        <text>Cancel</text>
+        <toolTip>Close download PopUp</toolTip>
+      </Element>
+    </Elements>
+  </Module>  
+  <Module>
+	<ModuleName>FinishProductionPopUp</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>ti_productionName</ID>
+        <text>Name your production</text>
+        <toolTip>Name your production</toolTip>
+      </Element>
+      <Element>
+        <ID>produceLabel</ID>
+        <text>Produce</text>
+      </Element>
+	  <Element>
+        <ID>cb_notifyEmail</ID>
+        <text>Send email message upon completion</text>
+        <toolTip>Do you wish to receive an email upon completion?</toolTip>
+      </Element>
+	  <Element>
+        <ID>ti_emailAdress</ID>
+        <text>Your email address</text>
+        <toolTip>Please enter your email address.</toolTip>
+      </Element>	  
+      <Element>
+        <ID>nameLabel</ID>
+        <text>Production name</text>
+      </Element>
+      <Element>
+        <ID>formatsLabel</ID>
+        <text>Formats</text>
+      </Element>
+      <Element>
+        <ID>cb_specialMusic</ID>
+        <text>Into and outro use their own music</text>
+	<toolTip>If selected, the film will contain three music tracks: intro, main part, outro</toolTip>
+      </Element>
+      <Element>
+        <ID>submitButton</ID>
+        <text>Submit</text>
+		<toolTip>Submit production to server for rendering</toolTip>
+      </Element>
+	</Elements>
+  </Module>    
+ <Module>
+	<ModuleName>FilmCollectionView</ModuleName>
+	  <Elements>
+	    <Element>
+         <ID>WARNING_IMPORT</ID>
+         <text>You are about to import '#'. The Current production will be overwritten.*Do you want to do this?</text>
+      </Element>
+      <Element>
+        <ID>WARNING_DELETE_SINGLE</ID>
+        <text>You are about to delete production '#'.*Are you sure?</text>
+      </Element>      
+	  <Element>
+        <ID>WARNING_DELETE_MULTI</ID>
+        <text>You are about to delete # productions.*Are you sure?</text>
+      </Element>
+	  <Element>
+		<ID>WARNING_NEW_PRODUCTION</ID>
+		<text>You are about to start a new production. The current production will be lost.*Do you want to proceed?</text>
+	  </Element>
+	  <Element>
+		<ID>titleLabel</ID>
+		<text>Film Collection</text>
+	  </Element>
+	  <Element>
+		<ID>goToHubButton</ID>
+		<text></text>
+		<toolTip>Return to hub</toolTip>
+	  </Element>
+		<Element>
+		<ID>okDeleteFilmButton</ID>
+		<text>Yes</text>
+	  </Element>
+		<Element>
+		<ID>cancelDeleteFilmButton</ID>
+		<text>No</text>
+	  </Element>
+	  		<Element>
+		<ID>okImportFilmButton</ID>
+		<text>Yes</text>
+	  </Element>
+		<Element>
+		<ID>cancelImportFilmButton</ID>
+		<text>No</text>
+	  </Element>
+	  	<Element>
+		<ID>okNewProductionButton</ID>
+		<text>Yes</text>
+	  </Element>
+		<Element>
+		<ID>cancelNewProductionButton</ID>
+		<text>No</text>
+	  </Element>
+	</Elements>
+  </Module>  
+  <Module>
+	<ModuleName>CommandBarFilms</ModuleName>
+	  <Elements>
+	    <Element>
+         <ID>downloadFilmButton</ID>
+         <text>Download</text>
+		<toolTip>Download selected film</toolTip>
+      </Element>
+      <Element>
+         <ID>deleteFilmButton</ID>
+         <text>Delete</text>
+		<toolTip>Delete selected film</toolTip>
+      </Element>      
+      <Element>
+         <ID>importFilmButton</ID>
+         <text>Load</text>
+		<toolTip>Load selected film</toolTip>
+      </Element> 
+      <Element>
+         <ID>newProductionButton</ID>
+         <text>New</text>
+		<toolTip>Reset Production</toolTip>
+      </Element> 
+	  <Element>
+		<ID>search</ID>
+		<text>Enter your search</text>
+		<toolTip>Filter for film name</toolTip>
+	  </Element>
+	</Elements>
+  </Module> 
+	<Module>
+	<ModuleName>MotifCollectionView</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>WARNING_DELETE_SINGLE</ID>
+        <text>You are about to delete motif '#'.*Are you sure?</text>
+      </Element>      
+	  <Element>
+        <ID>WARNING_DELETE_MULTI</ID>
+        <text>You are about to delete # productions.*Are you sure?</text>
+      </Element>
+	  <Element>
+		<ID>titleLabel</ID>
+		<text>Motif Collection</text>
+	  </Element>
+	  <Element>
+		<ID>goToHubButton</ID>
+		<text></text>
+		<toolTip>Return to hub</toolTip>
+	  </Element>
+	  <Element>
+		<ID>okDeleteMotifButton</ID>
+		<text>Yes</text>
+	  </Element>
+		<Element>
+		<ID>cancelDeleteMotifButton</ID>
+		<text>No</text>
+	  </Element>
+	</Elements>
+  </Module>  
+  <Module>
+	<ModuleName>CommandBarMotifs</ModuleName>
+	  <Elements>
+	    <Element>
+         <ID>deleteMotifButton</ID>
+         <text>Delete</text>
+		<toolTip>Delete selected motif</toolTip>
+      </Element>
+      <Element>
+         <ID>addMotifButton</ID>
+         <text>Add</text>
+		<toolTip>Add new motif</toolTip>
+      </Element>      
+      <Element>
+         <ID>applyMotifButton</ID>
+         <text>Apply</text>
+		<toolTip>Insert selected motif</toolTip>
+      </Element> 
+	  <Element>
+		<ID>search</ID>
+		<text>Enter your search</text>
+		<toolTip>Filter for motif name</toolTip>
+	  </Element>
+	</Elements>
+  </Module> 
+  <Module>
+	<ModuleName>MotifUploader</ModuleName>
+	  <Elements>
+	    <Element>
+         <ID>titleLabel</ID>
+         <text>Upload new motif</text>
+      </Element>
+      <Element>
+         <ID>closeButton</ID>
+		 <toolTip>Cancel motif upload</toolTip>
+      </Element>      
+      <Element>
+         <ID>newMotifLabel</ID>
+         <text>Please choose a JPG file&#xd;in RGB format or &#xd;a movie clip</text>
+      </Element> 
+	  <Element>
+		<ID>motifNameLabel</ID>
+		<text>Motif name:</text>
+	  </Element>
+	   <Element>
+		<ID>nameField</ID>
+		<text>Enter motif name</text>
+	  </Element>
+	  <Element>
+		<ID>browseButton</ID>
+		<text>Browse</text>
+		<toolTip>Browse for new motif</toolTip>
+	  </Element>
+	  <Element>
+		<ID>motifTypeLabel</ID>
+		<text>Motif type:</text>
+	  </Element>	
+	  <Element>
+		<ID>descriptionLabel</ID>
+		<text>Description:</text>
+	  </Element>
+	  <Element>
+		<ID>saveButton</ID>
+		<text>Save</text>
+		<toolTip>Save this motif</toolTip>
+	  </Element>
+    </Elements>
+  </Module> 
+   <Module>
+	<ModuleName>SortFilterGroupBar</ModuleName>
+	  <Elements>
+		<Element>
+			<ID>DATE_TEXT</ID>
+			<text>Date</text>
+		</Element>
+		<Element>
+			<ID>Name_TEXT</ID>
+			<text>Name</text>
+		</Element>
+		<Element>
+			<ID>Tile_TEXT</ID>
+			<text>Tile</text>
+		</Element>
+		<Element>
+			<ID>List_TEXT</ID>
+			<text>List</text>
+		</Element>
+      <Element>
+        <ID>locationLabel</ID>
+        <text>Location:</text>
+      </Element>
+      <Element>
+        <ID>categoryLabel</ID>
+        <text>Motif type:</text>
+      </Element>
+      <Element>
+        <ID>viewLabel</ID>
+		<text>View:</text>
+      </Element>
+      <Element>
+        <ID>sortLabel</ID>
+		<text>Sort by:</text>
+      </Element>
+	  </Elements>
+  </Module>
+  <Module>
+	<ModuleName>CommandBarStatistics</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>setDateButton</ID>
+        <text>Select Data</text>
+		<toolTip>Select Date range for statistic analysis</toolTip>
+      </Element>
+      <Element>
+        <ID>exportButton</ID>
+        <text>Export</text>
+		<toolTip>Export data to EXCEL</toolTip>
+      </Element>
+	</Elements>
+  </Module>   
+<Module>
+  <ModuleName>SelectDateRangePopUp</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>warningLabel0</ID>
+        <text>Select timespan</text>
+      </Element>
+      <Element>
+        <ID>cancelButton0</ID>
+        <text>Cancel</text>
+		<toolTip>Cancel selection</toolTip>
+      </Element>
+      <Element>
+        <ID>okButton</ID>
+        <text>Apply</text>
+		<toolTip>Calculate statistics for selected timespan</toolTip>
+      </Element>
+      <Element>
+        <ID>accountSelectionLabel</ID>
+        <text>Select account</text>
+      </Element>
+      <Element>
+        <ID>customIntervalLabel</ID>
+        <text>Custom interval</text>
+      </Element>
+     <Element>
+        <ID>startDayField</ID>
+        <text>Day</text>
+      </Element>
+     <Element>
+        <ID>startMonthField</ID>
+        <text>Month</text>
+      </Element>
+     <Element>
+        <ID>startYearField</ID>
+        <text>Year</text>
+      </Element>
+     <Element>
+        <ID>presetIntervalsLabel</ID>
+        <text>Preset intervals</text>
+      </Element>
+     <Element>
+        <ID>presetButton1</ID>
+        <text>Today</text>
+      </Element>
+     <Element>
+        <ID>presetButton2</ID>
+        <text>this month</text>
+      </Element>
+     <Element>
+        <ID>presetButton3</ID>
+        <text>last month</text>
+      </Element>
+     <Element>
+        <ID>presetButton4</ID>
+        <text>this year</text>
+      </Element>
+     <Element>
+        <ID>presetButton5</ID>
+        <text>last year</text>
+      </Element>
+     <Element>
+        <ID>fromLabel</ID>
+        <text>from:</text>
+      </Element>
+     <Element>
+        <ID>untilLabel</ID>
+        <text>until:</text>
+      </Element>
+	  </Elements>
+  </Module>   
+  <Module>
+	<ModuleName>StatisticView</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>cancelButton</ID>
+        <toolTip>Return to hub</toolTip>
+      </Element>
+      <Element>
+        <ID>titleLabel</ID>
+        <text>Statistics</text>
+      </Element>
+      <Element>
+        <ID>productionsLabel</ID>
+        <text>Productions</text>
+      </Element>
+	    <Element>
+        <ID>FCPD_DateHeader</ID>
+        <text>Date</text>
+      </Element>
+	    <Element>
+        <ID>FCPD_FilmsHeader</ID>
+        <text>Films</text>
+      </Element>
+	    <Element>
+        <ID>FCPD_ClipsHeader</ID>
+        <text>Clips</text>
+      </Element>
+	    <Element>
+        <ID>numFilmLabel3</ID>
+        <text>Clips:</text>
+      </Element>
+	    <Element>
+        <ID>numFilmLabel4</ID>
+        <text>Films:</text>
+      </Element>
+	    <Element>
+        <ID>totalsLabel</ID>
+        <text>Totals:</text>
+      </Element>
+	    <Element>
+        <ID>numFilmLabel5</ID>
+        <text>Clips:</text>
+      </Element>
+	    <Element>
+        <ID>numFilmLabel6</ID>
+        <text>Films:</text>
+      </Element>
+	    <Element>
+        <ID>usageLabel</ID>
+        <text>Product usage:</text>
+      </Element>
+	    <Element>
+        <ID>CPP_ProductNameHeader</ID>
+        <text>Product Name</text>
+      </Element>
+	    <Element>
+        <ID>CPP_nClipsColumnHeader</ID>
+        <text>Clips</text>
+      </Element>
+	  </Elements>
+  </Module>   
+	<Module>
+		<ModuleName>NewProductionPopUp</ModuleName>
+		<Elements>
+			<Element>
+				<ID>warningLabel</ID>
+				<text>You are about to start a new production. The timeline will be cleared. Do you want to proceed?</text>
+			</Element>
+			<Element>
+				<ID>okButton</ID>
+				<text>Yes</text>
+			</Element>
+			<Element>
+				<ID>cancelButton</ID>
+				<text>No</text>
+			</Element>
+		</Elements>
+	</Module>
+	<Module>
+	<ModuleName>ClipRenderer</ModuleName>
+		<Elements>
+			<Element>
+				<ID>ADDMOTIF_SINGLE</ID>
+				<text>1 Motif left</text>
+			</Element>
+			<Element>
+				<ID>ADDMOTIF_MULTIPLE</ID>
+				<text># Motifs left</text>
+			</Element>
+		</Elements>
+	</Module>		
+	<Module>
+	<ModuleName>ProductRenderer</ModuleName>
+		<Elements>
+			<Element>
+				<ID>MOTIF_SINGLE</ID>
+				<text>1 Motif</text>
+			</Element>
+			<Element>
+				<ID>MOTIF_MULTIPLE</ID>
+				<text># Motifs</text>
+			</Element>
+		</Elements>
+	</Module>	
+	<Module>
+	<ModuleName>SaveProductionPopUp</ModuleName>
+		<Elements>
+			<Element>
+				<ID>productionLabel</ID>
+				<text>Name production</text>
+			</Element>
+			<Element>
+				<ID>warningLabel0</ID>
+				<text>Save production</text>
+			</Element>
+			<Element>
+				<ID>cancelButton0</ID>
+				<text>Cancel</text>
+			</Element>
+			<Element>
+				<ID>okButton</ID>
+				<text>Save</text>
+			</Element>
+		</Elements>
+	</Module>		
+	<Module>
+		<ModuleName>ProductionSubmitted</ModuleName>
+		<Elements>
+			<Element>
+				<ID>warningLabel</ID>
+				<text>The production is submitted and the film will be in your film collection when its done. What do you want to do next?</text>
+			</Element>
+			<Element>
+				<ID>cancelButton</ID>
+				<text>Logout</text>
+			</Element>
+			<Element>
+				<ID>okButton</ID>
+				<text>Startscreen</text>
+			</Element>
+			<Element>
+				<ID>newButton</ID>
+				<text>New Production</text>
+			</Element>
+		</Elements>
+	</Module>	
+  <Module>
+	<ModuleName>ProductCollectionView</ModuleName>
+	<Elements>
+		<Element>
+			<ID>collectionLabel</ID>
+			<text>Product Collection</text>
+		</Element>
+	</Elements>
+  </Module>	
+</Modules>

@@ -1,0 +1,861 @@
+g(uploadMotifPopupFunc);
+    $('#saveMotifBtn').data("kendoButton").enable(false);
+    $("#motif-upload-form #upload-input").change(function(){
+        console.log('upload');
+        uploadMotifFunc(function(){
+            $('#saveMotifBtn').data("kendoButton").enable(true);
+        });
+        event.preventDefault();
+    });
+
+    $("#motif-upload-form").submit(function(e){
+        console.log('save motif');
+        saveMotifFunc();
+
+        var curPopup = $(this).closest("[data-role=window]");
+        curPopup.kendoWindow("close");
+        curPopup.parent().removeClass(winClass);
+        e.preventDefault();
+    });
+};
+
+//search renew function
+/*function searchFunc () {
+    searchVal = $('#search-field').val();
+    if ( searchVal != '' ) {
+        motifsDataSource.query({
+            filter: { field: "name", operator: "contains", value:searchVal }
+        });
+        prevSearchVal = searchVal;
+    } else {
+        motifsDataSource.query({
+            filter: { field: "name", operator: "contains", value:searchVal }
+        });
+        prevSearchVal = '';
+    };
+    $('#deleteMotif').data("kendoButton").enable(false);
+}
+
+searchVal = $('#search-field').val();
+prevSearchVal = searchVal;
+
+if ( $('#search-field') ) {
+    var searchInterval = '';
+    $('#search-field').on("focus", this, function(){
+        searchInterval = setInterval(function(){
+            searchFunc();
+        },300);
+    });
+    $('#search-field').on("blur", this, function(){
+        clearInterval(searchInterval);
+    });
+}*/
+
+
+//---------------------------FILMS-----------------
+
+filmsDataSource = new kendo.data.DataSource({
+    transport: {
+        read: function(e) {
+            e.success(filmsList);
+        },
+        create: function(e) {
+            e.data.id = filmsList.length;
+            filmsList.push(e.data);
+            e.success(e.data)
+        },
+        update: function(e) {
+            /*filmsList[getIndexById(e.data.id)] = e.data;*/
+            filmsList[e.data.id] = e.data;
+            e.success();
+        },
+        destroy: function(e) {
+            /*motifsList.splice(getIndexById(e.data.id), 1);*/
+            filmsList.splice(e.data.id, 1);
+            e.success();
+        }
+    },
+    batch: false,
+    sort: [
+        {field: "name", dir: "asc"}
+    ],
+    schema: {
+        model: {
+            id: "id",
+            fields: {
+                id: { editable: false, nullable: true },
+                filmId: { type: "number" },
+                accountId: { type: "number" },
+                jobId: { type: "number" },
+                name: { type: "string" },
+                crTime: { type: "number" },
+                crDate: { type: "string" },
+                duration: { type: "number" },
+                durTime: { type: "string" },
+                videoFiles: { type: "default" },
+                products: { type: "string" },
+                motifs: { type: "string" }
+            }
+        }
+    },
+    error: function(e) {
+        alert('failed to load films array', e.status);
+    }
+});
+
+function filmsListViewChangeFunc() {
+    toggleBtnStatus(filmsBtnsToDisable,true);
+    selectedFilmUid = this.select().data('uid');
+    selectedFilmId = this.select().data('id');
+    console.log(selectedFilmId);
+    /*console.log( filmsDataSource.getByUid(selectedFilmUid) );*/
+};
+
+function onSelectFilter(e) {
+    var dataItem = this.dataItem(e.item);
+    console.log(dataItem);
+
+    filmsDataSource.query({
+        sort: [
+            {field: dataItem.value, dir: "asc"}
+        ]
+    });
+    toggleBtnStatus(filmsBtnsToDisable,true);
+};
+
+$('#filterFilmsSelect1').kendoDropDownList({
+    select:onSelectFilter
+});
+
+FilmsViewModel = kendo.observable({
+    deleteFilm: function() {
+        var curDelItem = filmsDataSource.getByUid(selectedFilmUid);
+        filmsDataSource.remove(curDelItem);
+        /*filmsList = filmsDataSource.data();*/
+        deleteFilmFunc();
+
+        var curPopup = $("[data-role=window]");
+        curPopup.kendoWindow("close");
+        curPopup.parent().removeClass(winClass);
+
+        toggleBtnStatus(filmsBtnsToDisable,false);
+    }
+});
+
+function deleteFilmPopupFunc() {
+    if ( $('#curr-film-name').length ) {
+        $('#curr-film-name').text( filmsDataSource.getByUid(selectedFilmUid).name );
+    };
+};
+
+function downloadFilmPopupFunc() {
+    var downloadList = $('.download-list');
+    var listContent = '';
+    var curFilm = filmsDataSource.getByUid(selectedFilmUid);
+    if ( downloadList.length ) {
+        for (var i=0; i < curFilm.videoFiles.length; i++){
+            var videoUrl = window.location.origin + '/data/accounts/' + curFilm.accountId + '/productions/' + curFilm.id + '/film_' + curFilm.id + '_' + curFilm.videoFiles[i][1] + '.' + curFilm.videoFiles[i][0] ;
+            listContent += '<li><a href="' + videoUrl + '" download="'  + curFilm.name + '_' + curFilm.videoFiles[i][1] +  '">' + curFilm.name + '_' + curFilm.videoFiles[i][1] + '.' + curFilm.videoFiles[i][0] + ' - ' + curFilm.videoFiles[i][2] + ' MB</a></li>';
+        }
+        $(downloadList).html(listContent);
+    };
+};
+
+function loadProdDialogFunc() {
+    var curItem = filmsDataSource.getByUid(selectedFilmUid);
+    console.log('----/current film/----');
+    console.log(curItem);
+    $('#curr-film-name').text(curItem.name);
+};
+
+function loadProdFunc() {
+
+    var curItem = filmsDataSource.getByUid(selectedFilmUid);
+    currentProduction.set('prodObj.name',curItem.name);
+    currentProduction.set('prodObj.durTime',curItem.durTime);
+    currentProduction.set('prodObj.clips',stringToArray(curItem.products));
+    currentProduction.set('prodObj.motifs',stringToArray(curItem.motifs));
+
+    userAccount.set('curProduction',curItem.name);
+
+    var curPopup = $("[data-role=window]");
+    curPopup.kendoWindow("close");
+    curPopup.parent().removeClass(winClass);
+
+    router.navigate('/production');
+    /*$('#production-films').data("kendoListView").clearSelection();*/
+    productionManageFunc();
+    recalcProductionTime();
+};
+
+function newProdDialogFunc() {
+    console.log('NEW PRODUCTION');
+
+    currentProduction.set('prodObj',defProductionParams);
+    userAccount.set('curProduction',defProductionParams.name);
+
+    var curPopup = $("[data-role=window]");
+    curPopup.kendoWindow("close");
+    curPopup.parent().removeClass(winClass);
+
+    router.navigate('/production');
+    productionManageFunc(function(){
+        currClipMotifsList = [];
+        currentProdMotifsDataSource.read();
+        currentProdClipsDataSource.read();
+    });
+};
+
+//search renew function
+/*    function searchFunc () {
+ searchVal = $('#page #search-field').val();
+ if (( searchVal != '' ) && ( searchVal != prevSearchVal )) {
+ filmsDataSource.query({
+ filter: { field: "name", operator: "contains", value:searchVal }
+ });
+ prevSearchVal = searchVal;
+ } else {
+ if ( ( prevSearchVal != '' ) ) {
+ filmsDataSource.query({
+ filter: { field: "name", operator: "contains", value:searchVal }
+ });
+ prevSearchVal = '';
+ };
+ };
+ toggleBtnStatus(filmsBtnsToDisable,false);
+ }
+
+ searchVal = $('#page #search-field').val();
+ prevSearchVal = searchVal;
+
+ if ( $('#page  #search-field') ) {
+ var searchInterval = '';
+ $('#page #search-field').on("focus", this, function(){
+ searchInterval = setInterval(function(){
+ searchFunc();
+ },300);
+ });
+ $('#page #search-field').on("blur", this, function(){
+ clearInterval(searchInterval);
+ });
+ }*/
+
+
+// -------------------- CLIPS LIST FOR PRODUCTION --------------------
+clipsDataSource = new kendo.data.DataSource({
+    transport: {
+        read: function(e) {
+            e.success(ProductList);
+        },
+        create: function(e) {
+            e.data.id = ProductList.length;
+            ProductList.push(e.data);
+            e.success(e.data)
+        },
+        update: function(e) {
+            /*ProductList[getIndexById(e.data.id)] = e.data;*/
+            ProductList[e.data.id] = e.data;
+            e.success();
+        },
+        destroy: function(e) {
+            /*ProductList.splice(getIndexById(e.data.id), 1);*/
+            ProductList.splice(e.data.id, 1);
+            e.success();
+        }
+    },
+    batch: false,
+    schema: {
+        model: {
+            id: "id",
+            fields: {
+                id: { editable: false, nullable: true },
+                clipId: { type: "number" },
+                idString: { type: "string" },
+                name: { type: "string" },
+                location: { type: "string" },
+                crTime: { type: "number" },
+                date: { type: "string" },
+                duration: { type: "number" },
+                durTime: { type: "string" },
+                motifsNum: { type: "number" },
+                emptyMotifs: { type: "number" }
+            }
+        }
+    },
+    error: function(e) {
+        alert('failed to load clips array', e.status);
+    }
+});
+
+function clipsListViewChangeFunc() {
+    toggleBtnStatus($('#applyClipBtn'),true);
+    selectedProductUid = this.select().data('uid');
+    selectedProductId = this.select().data('id');
+};
+
+
+
+// -------------- PRODUCTION ----------------
+
+function productionManageFunc(callback) {
+    currClipsIds = $.extend( true, {}, currentProduction.get('prodObj.clips') );
+    curMotifsList = $.extend( true, {}, currentProduction.get('prodObj.motifs') );
+    currClipsList = [];
+    currClipMotifsList = [];
+    currentProdMotifsDataSource.read();
+
+    if ( currClipsIds.length > 0 ) {
+        for (i=0;i<currClipsIds[0].length;i++) {
+            for(j=0;j<ProductList.length;j++) {
+                if ( ProductList[j].clipId == currClipsIds[0][i] ) {
+                    currClipsList[i] = $.extend( true, {}, ProductList[j] );
+                    currClipsList[i].emptyMotifs = 0; //???
+                    break;
+                } else {
+                    currClipsList[i] = {
+                        id:j,
+                        clipId:0,
+                        idString:'none',
+                        durTime:'',
+                        emptyMotifs:0,
+                        name:'not available'
+                    };
+                };
+            };
+        };
+        currentProdClipsDataSource.read();
+    };
+
+    populateProdMotifsArr(function(){
+        console.log('currClipsList');
+        console.log(currClipsList );
+        console.log('curMotifsList');
+        console.log(curMotifsList);
+    });
+
+    checkEmptyMotifs();
+
+    if (callback && typeof(callback) === "function") {
+        callback();
+    }
+};
+
+function populateProdMotifsArr(callback) {
+    console.log('populateProdMotifsArrs');
+    for (i=0;i<curMotifsList.length;i++) {
+        var emptyMotifsCount = 0;
+        for (j=0;j<curMotifsList[i].length;j++) {
+            if ( curMotifsList[i][j] == -1 ) {
+                emptyMotifsCount++;
+                curMotifsList[i][j] = {
+                    id:j,
+                    motifId:0,
+                    accountId: userAccount.id,
+                    numName:alphabetNumeration[j]
+                };
+            } else {
+                for(z=0;z<motifsList.length;z++){
+                    if( curMotifsList[i][j] == motifsList[z].motifId ){
+                        curMotifsList[i][j] = $.extend( true, {},motifsList[z]);
+                        curMotifsList[i][j].numName = alphabetNumeration[j];
+                        curMotifsList[i][j].id = j;
+                        break;
+                    };
+                };
+                if ( typeof curMotifsList[i][j] !== 'object' ) {
+                    curMotifsList[i][j] = {
+                        id:j,
+                        motifId:'-1',
+                        accountId: userAccount.id,
+                        numName: alphabetNumeration[j]
+                    };
+                };
+            };
+            for(z=0;z<motifsContentTypeList.length;z++){
+                if (( currClipsList[i].clipId == motifsContentTypeList[z].productID ) && ( (j+1) == motifsContentTypeList[z].position ) ) {
+                    curMotifsList[i][j].aspect = parseInt( motifsContentTypeList[z].aspect * MOTIF_CONTAINER_HEIGHT ) ;
+                    break;
+                }
+            };
+        };
+        if ( emptyMotifsCount > 0 ) {
+            /*console.log(emptyMotifsCount);*/
+            currClipsList[i].emptyMotifs = emptyMotifsCount;
+        };
+    };
+    if (callback && typeof(callback) === "function") {
+        callback();
+    }
+};
+
+currentProdMotifsDataSource = new kendo.data.DataSource({
+    transport: {
+        read: function(e) {
+            e.success(currClipMotifsList);
+        },
+        create: function(e) {
+            e.data.id = currClipMotifsList.length;
+            currClipMotifsList.push(e.data);
+            e.success(e.data)
+        },
+        update: function(e) {
+            /*motifsList[getIndexById(e.data.id)] = e.data;*/
+            currClipMotifsList[e.data.id] = e.data;
+            e.success();
+        },
+        destroy: function(e) {
+            /*motifsList.splice(getIndexById(e.data.id), 1);*/
+            currClipMotifsList.splice(e.data.id, 1);
+            e.success();
+        }
+    },
+    batch: false,
+    schema: {
+        model: {
+            id: "id",
+            fields: {
+                id: { editable: false, nullable: true , defaultValue:0 },
+                motifId: { type: "number" , defaultValue:0 },
+                accountId: { type: "number" , defaultValue:0},
+                aspect: { type: "number", defaultValue:0 },
+                name: { type: "string" },
+                frameCount: { type: "number" },
+                crTime: { type: "number" },
+                date: { type: "string" },
+                description: { type: "string" },
+                numName: { type: "string", defaultValue:'null' }
+            }
+        }
+    },
+    error: function(e) {
+        alert('failed to load motifs array', e.status);
+    }
+});
+
+function currProdMotifsListViewChangeFunc() {
+    selectedClipMotifUid = this.select().data('uid');
+    selectedClipMotifId = this.select().index();
+    goToSelectClipMotif();
+};
+
+currentProdClipsDataSource = new kendo.data.DataSource({
+    transport: {
+        read: function(e) {
+            e.success(currClipsList);
+        },
+        create: function(e) {
+            e.data.id = currClipsList.length;
+            currClipsList.push(e.data);
+            e.success(e.data)
+        },
+        update: function(e) {
+            /*ProductList[getIndexById(e.data.id)] = e.data;*/
+            currClipsList[e.data.id] = e.data;
+            e.success();
+        },
+        destroy: function(e) {
+            /*ProductList.splice(getIndexById(e.data.id), 1);*/
+            currClipsList.splice(e.data.id, 1);
+            e.success();
+        }
+    },
+    batch: false,
+    schema: {
+        model: {
+            id: "id",
+            fields: {
+                id: { editable: false, nullable: true },
+                clipId: { type: "number" },
+                idString: { type: "string" },
+                name: { type: "string" },
+                location: { type: "string" },
+                crTime: { type: "number" },
+                date: { type: "string" },
+                duration: { type: "number" },
+                durTime: { type: "string" },
+                motifsNum: { type: "number" },
+                emptyMotifs: { type: "number" }
+            }
+        }
+    },
+    error: function(e) {
+        alert('failed to load clips array', e.status);
+    }
+});
+
+function currProdClipsListViewChangeFunc() {
+    console.log('select clip');
+    selectedClipUid = this.select().data('uid');
+    selectedClipId = this.select().index();
+    console.log(selectedClipId);
+    currClipMotifsList = curMotifsList[selectedClipId];
+    currentProdMotifsDataSource.read();
+    console.log(currClipMotifsList);
+    toggleBtnStatus(productionBtnsToDisable,true);
+};
+
+// --- replace motif ---
+function goToSelectClipMotif(callback) {
+    router.navigate('/motifSelect');
+    $('#applyMotifBtn').one('touchstart click',function(){
+        ApllySelectedMotif();
+    });
+    if (callback && typeof(callback) === "function") {
+        callback();
+    }
+};
+
+function ApllySelectedMotif(callback) {
+    router.navigate('/production');
+    var replacedMotif = currentProdMotifsDataSource.getByUid(selectedClipMotifUid);
+    var curMotif = $.extend(true, {} , motifsDataSource.getByUid(selectedMotifUid) );
+    curMotif.aspect = replacedMotif.aspect;
+    console.log('selectedClipMotif');
+    /*console.log(selectedClipMotifId);*/
+    /*console.log(replacedMotif);
+    console.log(curMotif);*/
+
+    curMotifsList[selectedClipId][selectedClipMotifId] = $.extend( true, {}, curMotif );
+    currClipMotifsList = curMotifsList[selectedClipId];
+    currentProdMotifsDataSource.read();
+    /*currentProdMotifsDataSource.insert(selectedClipMotifId, curMotif );*/
+    if ( currClipsList[selectedClipId].emptyMotifs > 0 ) {
+        currClipsList[selectedClipId].emptyMotifs -=1;
+        currentProdClipsDataSource.read();
+    };
+
+    checkEmptyMotifs();
+
+    if (callback && typeof(callback) === "function") {
+        callback();
+    }
+};
+
+
+// delete clip in production
+function prodDeleteClipFunc(){
+    console.log('----delete clip in production----');
+    var curDelItem = currentProdClipsDataSource.getByUid(selectedClipUid);
+    console.log(curDelItem.id);
+
+    currClipsList.splice(selectedClipId,1);
+    curMotifsList.splice(selectedClipId,1);
+    currentProdClipsDataSource.read();
+    currClipMotifsList = [];
+    currentProdMotifsDataSource.read();
+
+    toggleBtnStatus(productionBtnsToDisable,false);
+    recalcProductionTime();
+
+    console.log(curMotifsList);
+};
+
+function prodReplaceClipFunc(callback){
+    console.log('----replace clip in production----');
+    router.navigate('/prodCollection');
+    $('#applyClipBtn').one('touchstart click',function(){
+        ApllySelectedClip();
+    }).data("kendoButton").enable(false);;
+    if (callback && typeof(callback) === "function") {
+        callback();
+    }
+};
+
+function ApllySelectedClip(callback) {
+    router.navigate('/production');
+    var curMotifAspect = 0;
+    var replacingClip = ProductList[selectedProductId];
+    currClipsList[selectedClipId] = $.extend( true, {}, replacingClip );
+
+    curMotifsList[selectedClipId] = [];
+    for (i=0;i<replacingClip.motifsNum;i++) {
+        for(z=0;z<motifsContentTypeList.length;z++){
+            if (( replacingClip.clipId == motifsContentTypeList[z].productID ) && ( (i+1) == motifsContentTypeList[z].position ) ) {
+                curMotifAspect = parseInt( motifsContentTypeList[z].aspect * MOTIF_CONTAINER_HEIGHT ) ;
+                break;
+            }
+        };
+        console.log(curMotifAspect);
+
+        curMotifsList[selectedClipId][i] = {
+            id:i,
+            motifId: 0,
+            accountId: userAccount.id,
+            numName: alphabetNumeration[i],
+            aspect: curMotifAspect
+        };
+    };
+
+    currentProdClipsDataSource.read();
+    currentProdMotifsDataSource.read();
+    var currentListView = $("#production-films");
+    currentListView.data("kendoListView").select( currentListView.children().get(selectedClipId) );
+
+    recalcProductionTime();
+
+    if (callback && typeof(callback) === "function") {
+        callback();
+    }
+};
+
+
+// insert clip to production
+function prodInsertClipFunc(){
+    console.log('----insert clip in production----');
+    router.navigate('/prodCollection');
+    $('#applyClipBtn').one('touchstart click',function(){
+        ApllyNewSelectedClip();
+    });
+};
+
+function ApllyNewSelectedClip(callback) {
+    router.navigate('/production');
+    var curMotifAspect = 0;
+    var replacingClip = $.extend( true, {},ProductList[selectedProductId]);
+    /*var replacingClip = $.extend( true, {}, clipsDataSource.getByUid(selectedProductUid) );*/
+    var curClipsCnt = +currentProdClipsDataSource.data().length;
+
+    replacingClip.emptyMotifs = replacingClip.motifsNum;
+
+    currClipsList.push(replacingClip);
+    /*currentProdClipsDataSource.add(replacingClip);*/
+
+    curMotifsList.push([]);
+    for (i=0;i<replacingClip.motifsNum;i++) {
+        for(z=0;z<motifsContentTypeList.length;z++){
+            if (( replacingClip.clipId == motifsContentTypeList[z].productID ) && ( (i+1) == motifsContentTypeList[z].position ) ) {
+                curMotifAspect = parseInt( motifsContentTypeList[z].aspect * MOTIF_CONTAINER_HEIGHT ) ;
+                break;
+            }
+        };
+
+        curMotifsList[curClipsCnt][i] = {
+            itemId: i,
+            motifId:0,
+            accountId: userAccount.id,
+            numName:alphabetNumeration[i],
+            aspect: curMotifAspect
+        };
+    };
+    console.log('ApllyNewSelectedClip');
+    console.log(curMotifsList);
+
+    currentProdClipsDataSource.read();
+    currentProdMotifsDataSource.read();
+
+    var currentListView = $("#production-films");
+    currentListView.data("kendoListView").select( currentListView.children().get(curClipsCnt) );
+
+    recalcProductionTime();
+
+    if (callback && typeof(callback) === "function") {
+        callback();
+    }
+};
+
+function checkEmptyMotifs(){
+    if ( currClipsList.length > 0 ) {
+        var unfilledMotifsNum = 0;
+        for (i=0;i<currClipsList.length;i++) {
+            if ( currClipsList[i].emptyMotifs > 0 ) {
+                unfilledMotifsNum++;
+            };
+            toggleBtnStatus($('#produceProdBtn'),false);
+        }
+        if ( unfilledMotifsNum == 0 ) {
+            toggleBtnStatus($('#produceProdBtn'),true);
+        };
+    };
+};
+
+function recalcProductionTime() {
+    if ( currClipsList.length > 0 ) {
+        var totalFrameCount = 0;
+        for (i=0;i<currClipsList.length;i++) {
+            totalFrameCount += currClipsList[i].duration;
+        }
+    };
+    currentProduction.set('prodObj.durTime',timeFormating(totalFrameCount));
+};
+
+function initProductionDragNDrop(){
+    $('#production-films').kendoSortable({
+        axis:'x',
+        filter: ">div.list-item",
+        placeholder: function(element) {
+            return element.clone().css("opacity", 0.3);
+        },
+        hint: function(element) {
+            return element.clone().removeClass("k-state-selected");
+        },
+        change: function(e) {
+            var curItem = $.extend( true, {}, currClipsList[e.oldIndex] );
+            var curMotifs = [];
+
+            currClipsList.splice(e.oldIndex,1);
+            currClipsList.splice(e.newIndex,0,curItem);
+            for (i=0;i<curMotifsList[e.oldIndex].length;i++) {
+                curMotifs.push( $.extend( true, {}, curMotifsList[e.oldIndex][i] ) );
+            };
+
+            curMotifsList.splice(e.oldIndex,1);
+            curMotifsList.splice(e.newIndex,0,[]);
+            for (i=0;i<curMotifs.length;i++) {
+                curMotifsList[e.newIndex][i] = $.extend( true, {}, curMotifs[i] );
+            };
+            currentProdClipsDataSource.read();
+        }
+    });
+};
+var router = new kendo.Router({
+    routeMissing: function(e){
+        console.log('404');
+        router.navigate("/page404");
+    },
+    change: function(e){
+        console.log(e.url);
+    }
+});
+router.route("/", function() {
+    layout.showIn("#page", loginPage );
+});
+
+router.route("/login", function() {
+    layout.showIn("#page", loginPage);
+});
+
+router.route("/hub", function() {
+    if ( userAccount.get('loginStatus') != 0 ) {
+        layout.showIn("#page", hubPage);
+    } else {
+        router.navigate("/login");
+    };
+});
+router.route("/myproductions", function() {
+    if ( userAccount.get('loginStatus') != 0 ) {
+        layout.showIn("#page", prodListPage);
+    } else {
+        router.navigate("/login");
+    };
+});
+router.route("/production", function() {
+    if ( userAccount.get('loginStatus') != 0 ) {
+        layout.showIn("#page", productionPage);
+    } else {
+        router.navigate("/login");
+    };
+});
+router.route("/motifs", function() {
+    if ( userAccount.get('loginStatus') != 0 ) {
+        layout.showIn("#page", motifsPage);
+    } else {
+        router.navigate("/login");
+    };
+});
+router.route("/motifSelect", function() {
+    if ( userAccount.get('loginStatus') != 0 ) {
+        layout.showIn("#page", motifsSelectPage);
+    } else {
+        router.navigate("/login");
+    };
+});
+router.route("/prodCollection", function() {
+    if ( userAccount.get('loginStatus') != 0 ) {
+        layout.showIn("#page", prodColPage);
+    } else {
+        router.navigate("/login");
+    };
+});
+router.route("/statistics", function() {
+    if ( userAccount.get('loginStatus') != 0 ) {
+        layout.showIn("#page", statisticsPage);
+    } else {
+        router.navigate("/login");
+    };
+});
+
+router.route("/logout", function() {
+    layout.showIn("#page", logoutPage);
+});
+
+router.route("/page404", function() {
+    layout.showIn("#page", page404);
+});
+
+$(function(){
+    templateLoader.loadExtTemplate(tplArr,function(){
+        console.log('----------- all tpls loaded ---------------');
+
+        motifTemplate = kendo.template($("#motifTemplate").html());
+        filmTemplate = kendo.template($("#filmTemplate").html());
+        clipTemplate = kendo.template($("#clipTemplate").html());
+        clipProdTemplate = kendo.template($("#clipProdTemplate").html());
+        motifProdTemplate = kendo.template($("#motifProdTemplate").html());
+
+        layout.render($("#application"));
+        router.start();
+
+        kendo.bind($('#loginPage'), LoginPageViewModel);
+        kendo.bind($('#motifPage'), MotifsViewModel);
+        kendo.bind($('#filmsPage'), FilmsViewModel);
+
+
+        // logout
+        $( "#page" ).on( "touchstart click", "#logout-btn", function( event ) {
+            logOut();
+            event.preventDefault();
+        });
+
+        //-------------- Theme select --------------
+        $('#theme-select').kendoDropDownList({
+            index: 0,
+            change: onChange
+        });
+        function onChange() {
+            var value = $("#theme-select").val();
+
+            newThemeLink = 'css/kendo.'+value+'.min.css';
+            $('#theme-link').attr('href',newThemeLink);
+            $('body').attr('class','k-content theme-'+value);
+
+            console.log(value);
+        };
+
+    });
+
+//--------------POPUP Functions --------------
+    var win = $("#window").kendoWindow(kendoWindowParams);
+
+    $('body').on('touchstart click','.popup-close',function(event){
+        var curPopup = $(this).closest("[data-role=window]");
+        curPopup.kendoWindow("close");
+        curPopup.parent().removeClass(winClass);
+    });
+
+    $('body').on('touchstart click','.k-overlay',function(event){
+        var curPopups = $("[data-role=window]");
+        curPopups.parent().removeClass(winClass);
+        curPopups.kendoWindow("close");
+    });
+
+    $('body').on('touchstart click','.popup-btn',function(event){
+        var $curPopup = $("#window");
+        winClass = $(this).data('popup-type');
+        var tplName = $(this).data('popup-content');
+        refreshCallBackFunc = window[ $(this).data('refresh-func') ];
+        //here we get function name that we will use to fill our window with data
+        $curPopup.parent().addClass(winClass);
+        var win = $curPopup.data("kendoWindow");
+        win.bind('refresh',function(){
+            kendo.init($curPopup);
+            if (typeof refreshCallBackFunc === "function") {
+                refreshCallBackFunc();
+            };
+            win.center();
+            win.open();
+            refreshCallBackFunc = '';
+        });
+        win.refresh('tpl/popups/'+tplName+'.html.tpl');
+    });
+
+});                                                                                                                                                                                                                                                                                                                                                                                                                                        

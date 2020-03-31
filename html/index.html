@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>virtualcampaign.de</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="refresh" content="43200" />
+
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="css/kendo.common.core.css" />-->
+    <link rel="stylesheet" href="css/kendo.common-bootstrap.core.css" />
+    <link id="theme-link" rel="stylesheet" href="css/kendo.metroblack.css" /> <!--kendo.bootstrap.css-->
+
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript">
+        var DEFAULT_THEME = 'metroblack';
+        var newThemeLink = 'css/kendo.'+DEFAULT_THEME+'.min.css';
+        document.getElementById("theme-link").setAttribute("href", newThemeLink);
+        document.getElementsByTagName('body').className += 'k-content theme-' + DEFAULT_THEME;
+    </script>
+    <script src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart","table"]});
+    </script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.collagePlus.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="js/html5lightbox.js"></script>
+
+    <script src="js/sha1.js"></script>
+
+    <script src="js/app.js"></script>
+
+</head>
+<body class="theme-metroblack k-content">
+
+    <div class="wrapper">
+        <div id="application" class="k-content">
+        </div>
+    </div>
+
+    <script id="login" type="text/x-kendo-template">
+        <div id="loginPage">
+            <div class="logo"></div>
+            <div id="language">
+                <select id="language-select" name="language" data-role="dropdownlist">
+                    <option selected="selected" value="en_loc">English</option>
+                    <option value="de_loc">Deutsch</option>
+                    <option value="tr_loc">Türkçe</option>
+                    <option value="ru_loc">Русский</option>
+                    <option value="pl_loc">Polski</option>
+                </select>
+            </div>
+<!--
+            <div id="themePanel">
+                <select id="theme-select" name="theming" data-role="dropdownlist">
+                    <option value="bootstrap">Default</option>
+                    <option value="blueopal">Blue Opal</option>
+                    <option value="silver">Silver</option>
+                    <option value="uniform">Uniform</option>
+                    <option value="metro">Metro</option>
+                    <option value="black">Black</option>
+                    <option selected="selected" value="metroblack">Metro Black</option>
+                    <option value="highcontrast">High Contrast</option>
+                    <option value="moonlight">Moonlight</option>
+                    <option value="flat">Flat</option>
+                </select>
+            </div>
+-->
+            <div class="centered-wrapper">
+                <div class="centered-wr login-wrapper">
+                    <div class="centered-container">
+                        <div class="inner-content">
+                            <div class="login-wr">
+                                <h1 class="lang-replace" data-lang="lbl_01">Account</h1>
+                                <form class="login-form" id="login-form" action="">
+                                    <div class="row">
+                                        <input id="username" name="username" class="k-input" type="text" autocapitalize="off"/>
+                                    </div>
+                                    <div class="row">
+                                        <input id="password" name="password" class="k-input" type="password"/>
+                                    </div>
+                                    <div class="row btn-row">
+                                        <div class="error">
+                                            <p class="error-msg lang-replace" data-lang="loginError">Incorrect login or password</p>
+                                            <p class="error-empty-msg lang-replace" data-lang="loginEmptyError">Please , fill all fields</p>
+                                            <p class="error-same-user lang-replace" data-lang="sameUserErrorMsg">Same user is already logged in</p>
+                                        </div>
+                                        <span id="loginBtn" class="big" data-role="button" data-click="loginCheckFunc">
+                                            <span class="lang-replace" data-lang="login">Login</span>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="app_ver">0.9.97b</div>
+        </div>
+    </script>
+
+    <script id="hub" type="text/x-kendo-template">
+        <div id="hubPage">
+            <div class="lang-wr">
+                <div class="top-panel hub-top-panel ">
+                    <h1><span class="lang-replace" data-lang="welcomeLabel">Welcome</span> <span data-bind="text: firstName"></span> <span data-bind="text: surName"></span></h1>
+                    <button type="button" id="logout-btn" class="k-button icon-button logout-btn">
+                        <svg class="svg-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 96 96" enable-background="new 0 0 96 96" xml:space="preserve">
+                        <path id="Power"  d="M39,27.3v8.1c-3.7,2.7-6.1,7.1-6.1,12c0,8.3,6.7,15.1,15.1,15.1c8.3,0,15.1-6.8,15.1-15.1
+                            c0-4.9-2.4-9.3-6.1-12v-8.1C64.7,30.7,70,38.4,70,47.4h0c0,12.2-9.9,22-22,22c-12.2,0-22-9.9-22-22C26,38.4,31.3,30.7,39,27.3z
+                             M43.2,22.3h9.4v30h-9.4V22.3z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="centered-wrapper hub-wr">
+                    <div class="centered-wr ">
+                        <div class="centered-container">
+                            <div class="inner-content">
+                                <ul class="hub-menu">
+                                    <li>
+                                        <a href="#/myproductions">
+                                            <span class="txt lang-replace" data-lang="HUBFilmsLabel" data-tooltip="HUBFilmsLabelTooltip">My Filmproductions</span>
+                                            <span class="val" data-bind="text: productsVal"></span>
+                                            <span class="val left-pos" data-bind="visible:inProductionNum">
+                                                <span data-bind="text: inProductionNum"></span>
+                                                <span class="lang-replace" data-lang="inProduction"></span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#/production">
+                                            <span class="txt lang-replace" data-lang="HUBProductionLabel" data-tooltip="HUBProductionLabelTooltip">Production</span>
+                                            <span class="val left-pos" data-bind="text: curProduction"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#/motifs">
+                                            <span class="txt lang-replace" data-lang="HUBMotifsLabel" data-tooltip="HUBMotifsLabelTooltip">My Motifs</span>
+                                            <span class="val" data-bind="text: motifsVal"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#/statistics">
+                                            <span class="txt lang-replace" data-lang="HUBStatisticsLabel" data-tooltip="HUBStatisticsLabelTooltip">Statistics</span>
+                                        </a>
+                                    </li>
+                                    <li class="hidden-cnt">
+                                        <a href="#/admin-hub">
+                                            <span class="txt lang-replace" data-lang="HUBAdminLabel" data-tooltip="HUBAdminLabelTooltip">Administration</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="loading" type="text/x-kendo-template">
+        <div id="loadingPage" class="container">
+            <div class="centered">
+                <h1 class="lang-replace" data-lang="Loading_SPLASH_SCREEN" >Loading...</h1>
+                <div id="loading-progressbar" data-role="progressbar"
+                     data-min="0"
+                     data-max="100"
+                     data-show-status="false"
+                     data-animation="false"></div>
+            </div>
+        </div>
+    </script>
+
+    <script id="logout" type="text/x-kendo-template">
+        <div id="logoutPage" class="container">
+            <br>
+            <h1 class="lang-replace" data-lang="goodbyeLabel">Goodbye!</h1>
+            <div class="info-text">
+                <p data-bind="text: lang.exitTextLabel1">Thank you for using Virtual Campaign!</p>
+                <p>
+                    <span class="lang-replace" data-lang="exitTextLabel2">
+                        We are happy for you feedback.<br>
+                                        Send us an email to:<br>
+                    </span>
+                    <a href="mailto:info@virtualcampaign.de">info@virtualcampaign.de</a>
+                </p>
+                <p class="lang-replace" data-lang="exitTextLabel3">Your VirtualCampaign-Team!</p>
+                <a class="k-button lang-replace" href="#/login" data-lang="login">Login</a>
+            </div>
+        </div>
+    </script>
+
+    <div id="window">
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Modules>
+  <Module>
+    <ModuleName>General</ModuleName>
+	<Elements>
+		<Element>
+		<ID>NEW_PRODUCTION</ID>
+		<text>Yeni Calisma</text>
+	</Element>
+	<Element>
+		<ID>DROPDOWN_DATE</ID>
+		<text>tarihe gore</text>
+	</Element>
+	<Element>
+		<ID>DROPDOWN_NAME</ID>
+		<text>ada gore</text>
+	</Element>
+	<Element>
+		<ID>DROPDOWN_DEFAULT</ID>
+		<text>Varsayilan</text>
+	</Element>
+	<Element>
+		<ID>JAN_TEXT</ID>
+		<text>Ocak</text>
+	</Element>
+	<Element>
+		<ID>FEB_TEXT</ID>
+		<text>Subat</text>
+	</Element>
+	<Element>
+		<ID>MAR_TEXT</ID>
+		<text>Mart</text>
+	</Element>
+	<Element>
+		<ID>APR_TEXT</ID>
+		<text>Nisan</text>
+	</Element>
+	<Element>
+		<ID>MAI_TEXT</ID>
+		<text>Mayis</text>
+	</Element>
+	<Element>
+		<ID>JUN_TEXT</ID>
+		<text>Haziran</text>
+	</Element>
+	<Element>
+		<ID>JUL_TEXT</ID>
+		<text>Temmuz</text>
+	</Element>
+	<Element>
+		<ID>AUG_TEXT</ID>
+		<text>Agustos</text>
+	</Element>
+	<Element>
+		<ID>SEP_TEXT</ID>
+		<text>Eylul</text>
+	</Element>
+	<Element>
+		<ID>OCT_TEXT</ID>
+		<text>Ekim</text>
+	</Element>
+	<Element>
+		<ID>NOV_TEXT</ID>
+		<text>Kasim</text>
+	</Element>
+	<Element>
+		<ID>DEC_TEXT</ID>
+		<text>Aralik</text>
+	</Element>
+	</Elements>
+</Module>
+	<Module>
+    <ModuleName>Main</ModuleName>
+	<Elements>
+		<Element>
+			<ID>welcomeLabel</ID>
+			<text>Hos geldiniz!</text>
+		</Element>
+		<Element>
+			<ID>loginButton</ID>
+			<text>Giris</text>
+		</Element>
+	</Elements>
+	</Module>
+  <Module>
+    <ModuleName>Main_HUB</ModuleName>
+	<Elements>
+		<Element>
+			<ID>HUBFilmsLabel</ID>
+			<text>Film Arsivim</text>
+			<toolTip>Film Arsivim</toolTip>
+		</Element>
+		<Element>
+			<ID>HUBMotifsLabel</ID>
+			<text>Gorsellerim</text>
+			<toolTip>Gorsellerim</toolTip>
+		</Element>
+		<Element>
+			<ID>HUBAdminLabel</ID>
+			<text>Yonetim</text>
+			<toolTip>Yonetim</toolTip>
+		</Element>
+		<Element>
+			<ID>HUBStatisticsLabel</ID>
+			<text>Istatistikler</text>
+			<toolTip>Istatistikler</toolTip>
+		</Element>
+			<Element>
+			<ID>HUBProductionLabel</ID>
+			<text>Calisma sayfam</text>
+			<toolTip>Calisma sayfam</toolTip>
+		</Element>
+	</Elements>
+	</Module>
+	<Module>	  
+    <ModuleName>Loader</ModuleName>
+	<Elements>
+		<Element>
+			<ID>LOAD_INIT</ID>
+			<text>Data yukleniyor...</text>
+		</Element>
+		<Element>
+			<ID>LOAD_ACCOUNTS</ID>
+			<text>Hesap yukleniyor...</text>
+		</Element>
+		<Element>
+			<ID>LOAD_PRODUCTS</ID>
+			<text>Calismalar yukleniyor...</text>
+		</Element>
+		<Element>
+			<ID>LOAD_MOTIFS</ID>
+			<text>Gorseller yukleniyor...</text>
+		</Element>
+		<Element>
+			<ID>LOAD_FILMS</ID>
+			<text>Filmler yukleniyor...</text>
+		</Element>
+		<Element>
+			<ID>LOAD_DONE</ID>
+			<text>Yukleme tamamlandi.</text>
+		</Element>
+	</Elements>
+	</Module>
+	<Module>
+    <ModuleName>Logout</ModuleName>
+	<Elements>
+		<Element>
+			<ID>goodbyeLabel</ID>
+			<text>Gule gule!</text>
+		</Element>
+		<Element>
+			<ID>exitTextLabel</ID>
+			<text>VirtualCampaign viPost'u kullandiginiz icin tesekkur ederiz!
+			 *Yorumlariniz icin bize *vipost@stroer.com.tr* adresinden ulasabilirsiniz.
+			 *VirtualCampaign viPost ekibi!</text>
+		</Element>
+	</Elements>
+	</Module>
+  <Module>
+    <ModuleName>MainLogin</ModuleName>
+    <Elements>
+      <Element>
+        <ID>lbl_01</ID>
+        <text>Hesap</text>
+        <toolTip></toolTip>
+      </Element>
+      <Element>
+        <ID>ti_username</ID>
+        <text>Kullanici adini giriniz</text>
+        <toolTip></toolTip>
+      </Element>
+      <Element>
+        <ID>ti_password</ID>
+        <text>Sifre giriniz</text>
+        <toolTip />
+      </Element>
+      <Element>
+        <ID>btnSend</ID>
+        <text>Giris</text>
+        <toolTip />
+      </Element>
+     <Element>
+        <ID>lb_userError</ID>
+        <text>Bu hesap kullanimda</text>
+        <toolTip />
+      </Element>
+     <Element>
+        <ID>lb_passwordError</ID>
+        <text>Lutfen hesap bilgilerini kontrol ediniz</text>
+        <toolTip />
+      </Element>	
+    </Elements>
+  </Module> 
+  <Module>
+	<ModuleName>CommandBarProduction</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>zoomInButton</ID>
+        <text>Yakinlastir</text>
+        <toolTip>Yakinlastir</toolTip>
+      </Element>
+      <Element>
+        <ID>zoomOutButton</ID>
+        <text>Uzaklastir</text>
+        <toolTip>Uzaklastir</toolTip>
+      </Element>
+      <Element>
+        <ID>deleteClipButton</ID>
+        <text>Klibi Sil</text>
+        <toolTip>Klibi Sil</toolTip>
+      </Element>
+      <Element>
+        <ID>replaceClipButton</ID>
+        <text>Klibi Degistir</text>
+        <toolTip>Klibi Degistir</toolTip>
+      </Element>
+     <Element>
+        <ID>insertClipLabel</ID>
+        <text>Klip Ekle</text>
+        <toolTip>Klip Ekle</toolTip>
+      </Element>
+     <Element>
+        <ID>newLabel</ID>
+        <text>Yeni</text>
+        <toolTip>Yeni</toolTip>
+      </Element>	
+      <Element>
+        <ID>bt_saveProduction</ID>
+        <text>Kaydet</text>
+        <toolTip>Kaydet</toolTip>
+      </Element>
+     <Element>
+        <ID>produceButton</ID>
+        <text>Olustur</text>
+        <toolTip>Olustur</toolTip>
+      </Element>
+    </Elements>
+  </Module> 	
+  <Module>
+	<ModuleName>CommandBarProducts</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>applyButton</ID>
+        <text>OK</text>
+        <toolTip>Uygula</toolTip>
+      </Element>
+      <Element>
+        <ID>search</ID>
+        <text>Aranacak kelime</text>
+        <toolTip>Aranacak kelime</toolTip>
+      </Element>
+    </Elements>
+  </Module> 
+  <Module>
+	<ModuleName>FilmDownloadPopUp</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>warningLabel</ID>
+        <text>Indir</text>
+        <toolTip>Indir</toolTip>
+      </Element>
+      <Element>
+        <ID>cancelButton</ID>
+        <text>Iptal</text>
+        <toolTip>Iptal</toolTip>
+      </Element>
+    </Elements>
+  </Module>  
+  <Module>
+	<ModuleName>FinishProductionPopUp</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>ti_productionName</ID>
+        <text>Calisma adi belirleyin</text>
+        <toolTip>Calisma adi belirleyin</toolTip>
+      </Element>
+      <Element>
+        <ID>produceLabel</ID>
+        <text>Olustur</text>
+      </Element>
+	<Element>
+        <ID>cb_notifyEmail</ID>
+        <text>Send email message upon completion</text>
+        <toolTip>Do you wish to receive an email upon completion?</toolTip>
+      </Element>
+	  <Element>
+        <ID>ti_emailAdress</ID>
+        <text>Your email address</text>
+        <toolTip>Please enter your email address.</toolTip>
+      </Element>	  	  
+      <Element>
+        <ID>nameLabel</ID>
+        <text>Calisma adi</text>
+      </Element>
+      <Element>
+        <ID>formatsLabel</ID>
+        <text>Format</text>
+      </Element>
+      <Element>
+        <ID>cb_specialMusic</ID>
+        <text>Into and outro use their own music</text>
+	<toolTip>If selected, the film will contain three music tracks: intro, main part, outro</toolTip>
+      </Element>
+      <Element>
+        <ID>submitButton</ID>
+        <text>Kaydet</text>
+		<toolTip>Kaydet</toolTip>
+      </Element>
+	</Elements>
+  </Module>    
+ <Module>
+	<ModuleName>FilmCollectionView</ModuleName>
+	  <Elements>
+	    <Element>
+         <ID>WARNING_IMPORT</ID>
+         <text>Mevcut calisma uzerine kaydedilecektir, devam etmek istiyor musunuz?</text>
+      </Element>
+      <Element>
+        <ID>WARNING_DELETE_SINGLE</ID>
+        <text># calismasini silmek istediginizden emin misiniz?</text>
+      </Element>      
+	  <Element>
+        <ID>WARNING_DELETE_MULTI</ID>
+        <text># calismalarini silmek istediginizden emin misiniz?</text>
+      </Element>
+	  <Element>
+		<ID>WARNING_NEW_PRODUCTION</ID>
+		<text>Yeni bir calisma baslatiyorsunuz. Mevcut calisma silinecek, devam etmek istiyor musunuz?</text>
+	  </Element>
+	  <Element>
+		<ID>titleLabel</ID>
+		<text>Film Arsivi</text>
+	  </Element>
+	  <Element>
+		<ID>goToHubButton</ID>
+		<text></text>
+		<toolTip>Baslat Geri</toolTip>
+	  </Element>
+		<Element>
+		<ID>okDeleteFilmButton</ID>
+		<text>Evet</text>
+	  </Element>
+		<Element>
+		<ID>cancelDeleteFilmButton</ID>
+		<text>Hayir</text>
+	  </Element>
+	  		<Element>
+		<ID>okImportFilmButton</ID>
+		<text>Evet</text>
+	  </Element>
+		<Element>
+		<ID>cancelImportFilmButton</ID>
+		<text>Hayir</text>
+	  </Element>
+	  	<Element>
+		<ID>okNewProductionButton</ID>
+		<text>Evet</text>
+	  </Element>
+		<Element>
+		<ID>cancelNewProductionButton</ID>
+		<text>Hayir</text>
+	  </Element>
+	</Elements>
+  </Module>  
+  <Module>
+	<ModuleName>CommandBarFilms</ModuleName>
+	  <Elements>
+	    <Element>
+         <ID>downloadFilmButton</ID>
+         <text>Indir</text>
+		<toolTip>Indir</toolTip>
+      </Element>
+      <Element>
+         <ID>deleteFilmButton</ID>
+         <text>Sil</text>
+		<toolTip>Sil</toolTip>
+      </Element>      
+      <Element>
+         <ID>importFilmButton</ID>
+         <text>Duzenle</text>
+		<toolTip>Duzenle</toolTip>
+      </Element> 
+      <Element>
+         <ID>newProductionButton</ID>
+         <text>Yeni</text>
+		<toolTip>Yeni</toolTip>
+      </Element> 
+	  <Element>
+		<ID>search</ID>
+		<text>Aranacak kelime</text>
+		<toolTip>Aranacak kelime</toolTip>
+	  </Element>
+	</Elements>
+  </Module> 
+	<Module>
+	<ModuleName>MotifCollectionView</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>WARNING_DELETE_SINGLE</ID>
+        <text># gorseli silmek uzeresiniz, devam etmek istiyor musunuz?</text>
+      </Element>      
+	  <Element>
+        <ID>WARNING_DELETE_MULTI</ID>
+        <text># Adli calismayi silmek uzeresiniz, devam etmek istiyor musunuz?</text>
+      </Element>
+	  <Element>
+		<ID>titleLabel</ID>
+		<text>Gorsel Arsivi</text>
+	  </Element>
+	  <Element>
+		<ID>goToHubButton</ID>
+		<text></text>
+		<toolTip>Baslat Geri</toolTip>
+	  </Element>
+			<Element>
+				<ID>okDeleteMotifButton</ID>
+				<text>Sil</text>
+			</Element>
+			<Element>
+				<ID>cancelDeleteMotifButton</ID>
+				<text>Hayir</text>
+			</Element>
+		</Elements>
+  </Module>  
+  <Module>
+	<ModuleName>CommandBarMotifs</ModuleName>
+	  <Elements>
+	    <Element>
+         <ID>deleteMotifButton</ID>
+         <text>Sil</text>
+		<toolTip>Sil</toolTip>
+      </Element>
+      <Element>
+         <ID>addMotifButton</ID>
+         <text>Ekle</text>
+		<toolTip>Ekle</toolTip>
+      </Element>      
+      <Element>
+         <ID>applyMotifButton</ID>
+         <text>Uygula</text>
+		<toolTip>Uygula</toolTip>
+      </Element> 
+	  <Element>
+		<ID>search</ID>
+		<text>Aranacak kelime</text>
+		<toolTip>Aranacak kelime</toolTip>
+	  </Element>
+	</Elements>
+  </Module> 
+  <Module>
+	<ModuleName>MotifUploader</ModuleName>
+	  <Elements>
+	    <Element>
+         <ID>titleLabel</ID>
+         <text>Yeni gorsel yukle</text>
+      </Element>
+      <Element>
+         <ID>closeButton</ID>
+		 <toolTip>yukle iptal</toolTip>
+      </Element>      
+      <Element>
+         <ID>newMotifLabel</ID>
+         <text>Lutfen Rgb formatinda JPG dosyasi veya video seciniz.</text>
+      </Element> 
+	  <Element>
+		<ID>motifNameLabel</ID>
+		<text>Gorsel adi:</text>
+	  </Element>
+	   <Element>
+		<ID>nameField</ID>
+		<text>Gorsel adi girin</text>
+	  </Element>
+	  <Element>
+		<ID>browseButton</ID>
+		<text>Gozat</text>
+		<toolTip>Gozat</toolTip>
+	  </Element>
+	  <Element>
+		<ID>motifTypeLabel</ID>
+		<text>Gorsel tipi:</text>
+	  </Element>	
+	  <Element>
+		<ID>descriptionLabel</ID>
+		<text>Aciklama:</text>
+	  </Element>
+	  <Element>
+		<ID>saveButton</ID>
+		<text>Kaydet</text>
+		<toolTip>Kaydet</toolTip>
+	  </Element>
+    </Elements>
+  </Module> 
+  <Module>
+	<ModuleName>MessageDialogDeleteFilm</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>okButton</ID>
+        <text>Sil</text>
+      </Element>
+      <Element>
+        <ID>cancelButton</ID>
+        <text>Hayir</text>
+      </Element>
+	</Elements>
+  </Module>    
+   <Module>
+	<ModuleName>SortFilterGroupBar</ModuleName>
+	  <Elements>
+		<Element>
+			<ID>DATE_TEXT</ID>
+			<text>Tarih</text>
+		</Element>
+		<Element>
+			<ID>Name_TEXT</ID>
+			<text>Ad</text>
+		</Element>
+		<Element>
+			<ID>Tile_TEXT</ID>
+			<text>Baslik</text>
+		</Element>
+		<Element>
+			<ID>List_TEXT</ID>
+			<text>Liste</text>
+		</Element>
+      <Element>
+        <ID>locationLabel</ID>
+        <text>Dosya Yeri:</text>
+      </Element>
+      <Element>
+        <ID>categoryLabel</ID>
+        <text>Kategori:</text>
+      </Element>
+      <Element>
+        <ID>viewLabel</ID>
+		<text>Gorunum:</text>
+      </Element>
+      <Element>
+        <ID>sortLabel</ID>
+		<text>Sirala:</text>
+      </Element>
+	  </Elements>
+  </Module>
+  <Module>
+	<ModuleName>CommandBarStatistics</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>setDateButton</ID>
+        <text>Data Sec</text>
+		<toolTip>Data Sec</toolTip>
+      </Element>
+      <Element>
+        <ID>exportButton</ID>
+        <text>Excel'e Aktar</text>
+		<toolTip>Excel'e Aktar</toolTip>
+      </Element>
+	</Elements>
+  </Module>   
+  <Module>
+  <ModuleName>SelectDateRangePopUp</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>warningLabel0</ID>
+        <text>Zaman Araligini Sec</text>
+      </Element>
+      <Element>
+        <ID>cancelButton0</ID>
+        <text>Iptal</text>
+		<toolTip>Iptal</toolTip>
+      </Element>
+      <Element>
+        <ID>okButton</ID>
+        <text>Uygula</text>
+		<toolTip>Uygula</toolTip>
+      </Element>
+      <Element>
+        <ID>accountSelectionLabel</ID>
+        <text>Hesap Sec</text>
+      </Element>
+      <Element>
+        <ID>customIntervalLabel</ID>
+        <text>Zaman Araligi</text>
+      </Element>
+     <Element>
+        <ID>startDayField</ID>
+        <text>Gun</text>
+      </Element>
+     <Element>
+        <ID>startMonthField</ID>
+        <text>Ay</text>
+      </Element>
+     <Element>
+        <ID>startYearField</ID>
+        <text>Yil</text>
+      </Element>
+     <Element>
+        <ID>presetIntervalsLabel</ID>
+        <text>Belirli zaman araliklari</text>
+      </Element>
+     <Element>
+        <ID>presetButton1</ID>
+        <text>Bugun</text>
+      </Element>
+     <Element>
+        <ID>presetButton2</ID>
+        <text>Bu Ay</text>
+      </Element>
+     <Element>
+        <ID>presetButton3</ID>
+        <text>Gecen Ay</text>
+      </Element>
+     <Element>
+        <ID>presetButton4</ID>
+        <text>Bu Yil</text>
+      </Element>
+     <Element>
+        <ID>presetButton5</ID>
+        <text>Gecen Yil</text>
+      </Element>
+     <Element>
+        <ID>fromLabel</ID>
+        <text>Baslangic:</text>
+      </Element>
+     <Element>
+        <ID>untilLabel</ID>
+        <text>Bitis:</text>
+      </Element>
+	  </Elements>
+  </Module>   
+  <Module>
+	<ModuleName>StatisticView</ModuleName>
+	  <Elements>
+      <Element>
+        <ID>cancelButton</ID>
+        <toolTip>Baslat Geri</toolTip>
+      </Element>
+      <Element>
+        <ID>titleLabel</ID>
+        <text>Istatistikler</text>
+      </Element>
+      <Element>
+        <ID>productionsLabel</ID>
+        <text>Calismalar</text>
+      </Element>
+	    <Element>
+        <ID>FCPD_DateHeader</ID>
+        <text>Tarih</text>
+      </Element>
+	    <Element>
+        <ID>FCPD_FilmsHeader</ID>
+        <text>Filmler</text>
+      </Element>
+	    <Element>
+        <ID>FCPD_ClipsHeader</ID>
+        <text>Klipler:</text>
+      </Element>
+	    <Element>
+        <ID>numFilmLabel3</ID>
+        <text>Klipler:</text>
+      </Element>
+	    <Element>
+        <ID>numFilmLabel4</ID>
+        <text>Filmler:</text>
+      </Element>
+	    <Element>
+        <ID>totalsLabel</ID>
+        <text>Toplam:</text>
+      </Element>
+	    <Element>
+        <ID>numFilmLabel5</ID>
+        <text>Klipler:</text>
+      </Element>
+	    <Element>
+        <ID>numFilmLabel6</ID>
+        <text>Filmler:</text>
+      </Element>
+	    <Element>
+        <ID>usageLabel</ID>
+        <text>Urune klipleri kullanimi:</text>
+      </Element>
+	    <Element>
+        <ID>CPP_ProductNameHeader</ID>
+        <text>Urun Adi</text>
+      </Element>
+	    <Element>
+        <ID>CPP_nClipsColumnHeader</ID>
+        <text>Klipler</text>
+      </Element>
+	  </Elements>
+  </Module>  
+	<Module>
+		<ModuleName>NewProductionPopUp</ModuleName>
+		<Elements>
+			<Element>
+				<ID>warningLabel</ID>
+				<text>Yeni bir calisma baslatiyorsunuz bu durumda onceki calisma sayfaniz silinecektir. Devam etmek istiyor musunuz?</text>
+			</Element>
+			<Element>
+				<ID>okButton</ID>
+				<text>Kaydet</text>
+			</Element>
+			<Element>
+				<ID>cancelButton</ID>
+				<text>Iptal</text>
+			</Element>
+		</Elements>
+	</Module>	
+	<Module>
+		<ModuleName>ClipRenderer</ModuleName>
+		<Elements>
+			<Element>
+				<ID>ADDMOTIF_SINGLE</ID>
+				<text>1 gorsel eksik</text>
+			</Element>
+			<Element>
+				<ID>ADDMOTIF_MULTIPLE</ID>
+				<text># gorsel eksik</text>
+			</Element>
+		</Elements>
+	</Module>		
+	<Module>
+	<ModuleName>ProductRenderer</ModuleName>
+		<Elements>
+			<Element>
+				<ID>MOTIF_SINGLE</ID>
+				<text>1 gorsel</text>
+			</Element>
+			<Element>
+				<ID>MOTIF_MULTIPLE</ID>
+				<text># gorsel</text>
+			</Element>
+		</Elements>
+	</Module>	
+	<Module>
+	<ModuleName>SaveProductionPopUp</ModuleName>
+		<Elements>
+			<Element>
+				<ID>productionLabel</ID>
+				<text>Calisma adi belirleyin</text>
+			</Element>
+			<Element>
+				<ID>warningLabel0</ID>
+				<text>Calismayi kaydet</text>
+			</Element>
+			<Element>
+				<ID>cancelButton0</ID>
+				<text>Iptal</text>
+			</Element>
+			<Element>
+				<ID>okButton</ID>
+				<text>Kaydet</text>
+			</Element>
+		</Elements>
+	</Module>	
+	<Module>	
+	<ModuleName>ProductionSubmitted</ModuleName>
+		<Elements>
+			<Element>
+				<ID>warningLabel</ID>
+				<text>Calisma hazirlaniyor, tamamlandiginda film arsivinize eklenecek. Simdi ne yapmak istersiniz?</text>
+			</Element>
+			<Element>
+				<ID>cancelButton</ID>
+				<text>Cikis</text>
+			</Element>
+			<Element>
+				<ID>okButton</ID>
+				<text>Ana sayfa</text>
+			</Element>
+			<Element>
+				<ID>newButton</ID>
+				<text>Yeni Calisma</text>
+			</Element>
+		</Elements>
+	</Module>		
+  <Module>
+	<ModuleName>ProductCollectionView</ModuleName>
+	<Elements>
+		<Element>
+			<ID>collectionLabel</ID>
+			<text>Urun klip arsivi</text>
+		</Element>
+	</Elements>
+  </Module>	
+</Modules>
